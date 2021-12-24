@@ -1,0 +1,147 @@
+body{
+	font-family: "Roboto";
+}
+
+.navbar-brand{
+	font-family: "LibreBaskerville";
+	font-style: italic;
+	font-weight: bold;
+}
+
+.nav-item{
+	padding-left: 10px;
+}
+
+b.nav{
+	color: #fefefe;
+	font-weight: normal;
+}
+
+b.nav:hover{
+	color: gray;
+}
+
+.btn-search{
+	background-color: #fff;
+	border: none;
+	width: 100px;
+	color: #000;
+}
+
+.btn-search:hover{
+	border: 1px solid #fff;
+	background-color: #333;
+	color: #fff;
+	transition-duration: 0.5s;
+}
+
+i.icon-nav{
+	color: #fff;
+}
+
+.card-img{
+	height: 600px;	
+	object-fit: cover;
+}
+
+.card{
+	margin-top: 50px;
+	margin-bottom: 50px;
+	height: 600px;
+}
+
+.white-box{
+	background-color: #fff;
+	width: 300px;
+	margin-top: 500px;
+	color: #000;
+	font-weight: bold;
+	box-shadow: 0 0 0 1px rgb(0 0 0 /10%);
+}
+
+.white-box:hover{
+	background-color: #ddd;
+	box-shadow: 0px 0px 0px 3px rgb(0 0 0 / 10%);
+	transition-duration: 0.2s
+}
+
+.title{
+	padding-bottom: 40px;
+}
+
+.btn-beli{
+	background-color: #444;
+	color: #fff;
+	width: 150px;
+}
+
+.btn-beli:hover{
+	background-color: #222;
+	color: #fff;
+}
+
+.login-container{
+	margin-top: 10%;
+	margin-bottom: 5%;
+
+}
+
+.login-form{
+	background-color: #4d4d4d;
+	color: #fff;
+	border-radius: 2%;
+}
+
+.text-title{
+	font-family: "LibreBaskerville";
+	font-style: italic;
+	font-weight: bold;
+	font-size: 50px;
+	text-decoration: none;
+	color: #fff;
+}
+
+.text-title-dark{
+	font-family: "LibreBaskerville";
+	font-style: italic;
+	font-weight: bold;
+	font-size: 50px;
+	text-decoration: none;
+}
+
+.form-group{
+	margin-bottom: 20px;
+}
+
+.btn-login{
+	background-color: #f64520;
+	width: 100%;
+	color: #000;
+	font-weight: bold;
+	margin-bottom: 20px;
+	color: #fff;
+}
+
+.btn-register{
+	background-color: #16B849;
+	width: 100%;
+	color: #fff;
+}
+
+.btn-register:hover{
+	background-color: #1CEB5E;
+}
+
+.dashboard{
+	margin-top: 50px;
+}
+
+.progress{
+	height: 30px;
+	width: 500px;
+}
+
+.progress-text{
+	color: blue;
+}
+
