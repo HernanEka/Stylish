@@ -1,7 +1,3 @@
-body{
-	font-family: "Roboto";
-}
-
 .navbar-brand{
 	font-family: "LibreBaskerville";
 	font-style: italic;
@@ -47,7 +43,6 @@ i.icon-nav{
 .card{
 	margin-top: 50px;
 	margin-bottom: 50px;
-	height: 600px;
 }
 
 .white-box{

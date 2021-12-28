@@ -28,22 +28,22 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav me-auto">
 					<li class="nav-item">
-						<a href="fashion.php" class="nav-link"><b class="nav">Wanita</b></a>
+						<a href="fashion.php?kategori=Wanita" class="nav-link"><b class="nav">Wanita</b></a>
 					</li>
 					<li class="nav-item">
-						<a href="#" class="nav-link"><b class="nav">Pria</b></a>
+						<a href="fashion.php?kategori=Pria" class="nav-link"><b class="nav">Pria</b></a>
 					</li>
 					<li class="nav-item">
-						<a href="#" class="nav-link"><b class="nav">Olahraga</b></a>
+						<a href="fashion.php?kategori=Olahraga" class="nav-link"><b class="nav">Olahraga</b></a>
 					</li>
 					<li class="nav-item">
-						<a href="#" class="nav-link"><b class="nav">Anak-Anak</b></a>
+						<a href="fashion.php?kategori=Anak" class="nav-link"><b class="nav">Anak-Anak</b></a>
 					</li>
 					<li class="nav-item">
 						<a href="about.php" class="nav-link"><b class="nav">Tentang Kami</b></a>
 					</li>
 				</ul>
-				<form class="d-flex">
+				<form action="" method="GET" class="d-flex">
 					<input type="search" class="form-control me-2" name="search" placeholder="Cari Product.." aria-label="Search">
 					<button type="submit" class="btn btn-search"><span class="fa fa-search"></span></button>
 					<ul class="navbar-nav me-auto" style="padding-right: 80px;">
@@ -54,17 +54,12 @@
 								<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
 									<li><a class="dropdown-item" href="#">Profile</a></li>
 									<li><hr class="dropdown-devider"></li>
-									<li><button type="button" class="btn btn-danger dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-										Log Out
-									</button></li>
+									<li><a href="controller/koneksi.php?logout=yes" class="dropdown-item">Log out</a></li>
 								</ul>
 							</div>
 						</li>
 						<li class="nav-item">
 							<a href="#" class="nav-link"><i class="fa fa-shopping-bag icon-nav"></i></a>
-						</li>
-						<li class="nav-item">
-							<a href="#" class="nav-link"><i class="fa fa-heart icon-nav"></i></a>
 						</li>
 						<?php }else{ ?>
 						<li class="nav-item">
@@ -78,21 +73,5 @@
 				</form>
 			</div>
 		</nav>
-		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="staticBackdropLabel">Log Out</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						Apakah Anda Yakin?
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-						<a href="home.php" class="btn btn-danger">Ya</a>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 

@@ -1,6 +1,5 @@
 <?php 
 
-include_once 'controller/koneksi.php';
 include_once 'controller/user_config.php';
 include 'layout/header.php'; 
 

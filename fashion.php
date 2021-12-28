@@ -1,9 +1,31 @@
 <?php 
-
-include 'controller/koneksi.php';
+include 'controller/user_config.php';
 include 'layout/header.php'; 
+
+if (isset($_GET['search'])) {
+	
+	$cari = $_GET['search'];
+
+	$sql = "SELECT * FROM product WHERE nama like '%$cari%'";
+	$select = mysqli_query($koneksi,$sql);
+
+}else if (isset($_GET['kategori'])) {
+	
+	$kategori = $_GET['kategori'];
+	$sql = "SELECT * FROM product WHERE kategori = '$kategori' ";
+	$select = mysqli_query($koneksi,$sql);
+
+}else{
+	$sql = "SELECT * FROM product";
+	$select = mysqli_query($koneksi,$sql);	
+}
+
+
+
+
+
 ?>
-<section id="carousel" style="margin-top: 10%">
+<section id="carousel" class="mt-4">
 	<div class="container">
 		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 			<div class="carousel-indicators">
@@ -36,23 +58,24 @@ include 'layout/header.php';
 		</div>
 	</div>
 </section>
-<!-- <section id="tawaran" style="margin-top: 50px;">
+
+<section id="Fashion">
 	<div class="container">
-		<div class="row text-center">
-			<h1 class="title">Pakaian yang mungkin anda suka</h1>
-		</div>
-		<div class="row justify-content-center" style="height: 650px;">
-			<div class="col-md-3">
-				<div class="card" style="border: none;">
-					<img src="https://cf.shopee.co.id/file/d488bae582ab9df56f674be925ce10e0" class="card-img-top">
-					<div class="card-body text-center">
-						<h5 class="card-title">Blouse Renda</h5>
-						<p class="card-text">Blouse Wanita Hijau - Tya Fashion<br>Rp 50.000</p>
-						<a href="#" class="btn btn-beli">Beli</a>
+		<div class="row">
+			<?php while ($data=mysqli_fetch_assoc($select)) { ?>
+				<div class="col-md-3">
+					<div class="card" style="border: none;">
+						<img src="src/img/foto-product/<?=$data['gambar']?>" class="card-img-top" style='max-height: 250px; object-fit: contain;'>
+						<div class="card-body text-center">
+							<h5 class="card-title"><?=$data['nama']?></h5>
+							<p class="card-text">Rp <?=number_format($data['harga'])?></p>
+							<a href="detail.php?id=<?=$data['id']?>" class="btn btn-beli">Beli</a>
+						</div>
 					</div>
 				</div>
-			</div>
+			<?php } ?>
+			
 		</div>
 	</div>
-</section> -->
+</section>
 <?php include 'layout/footer.php'; ?>

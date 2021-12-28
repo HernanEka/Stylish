@@ -6,4 +6,11 @@ if (!isset($_SESSION)) {
 
 $koneksi = mysqli_connect('localhost','root','','stylish');
 
+if (isset($_GET['logout'])) {
+	
+	session_destroy();
+	header("Location:../login.php");
+
+}
+
 ?>

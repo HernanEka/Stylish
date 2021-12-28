@@ -1,5 +1,6 @@
 <?php  
 
+include 'koneksi.php';
 
 function login($request)
 {
@@ -34,7 +35,14 @@ function login($request)
 				$_SESSION['nama'] = $data['nama'];
 				$_SESSION['email'] = $data['email'];
 				$_SESSION['pesan'] = 'Berhasil Login';
-				echo "hehe";
+
+				if (isset($_POST['remember'])) {
+					
+					setcookie('email', $_POST['email'], strtotime('+7 days'), "/");
+					setcookie('password', $_POST['password'], strtotime('+7 days'), "/");
+
+				}
+
 				header('Location:home.php');
 				exit();
 			}
@@ -45,6 +53,10 @@ function login($request)
 			exit();
 		}
 
+	}else{
+		$_SESSION['warning'] = 'Password Salah';
+		header('Location:login.php');
+		exit();
 	}
 }
 
@@ -79,5 +91,26 @@ function register($request)
 	}
 
 }
+
+function beli($request)
+{
+	global $koneksi;
+
+	$product_id = $_GET['id'];
+	$user_id = $_SESSION['id'];
+
+	$jumlah = $request['jumlah'];
+	$ukuran = $request['ukuran'];
+	$harga = $request['harga'];
+
+	$total = $jumlah * $harga;
+
+	$sql = "INSERT INTO pesanan VALUES ('','$product_id','$jumlah','$total','$ukuran','$user_id','2','')";
+	mysqli_query($koneksi,$sql);
+
+	header('Location:cart.php');
+}
+
+
 
 ?>

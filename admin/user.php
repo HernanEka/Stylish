@@ -2,7 +2,7 @@
 
 include '../controller/admin_config.php';
 
-$sql = "SELECT * FROM product";
+$sql = "SELECT * FROM users";
 $select = mysqli_query($koneksi,$sql);
 
 $i = 1;
@@ -48,9 +48,9 @@ $i = 1;
 				<h1 class="display-6 text-muted p-4 ">Admin</h1>
 				<div class="p-4" style="min-height: 70vh;">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a href="home.php" class="nav-link fw-bold">Tabel Pesanan</a></li>
+						<li class="nav-item"><a href="home.php" class="nav-link">Tabel Pesanan</a></li>
 						<li class="nav-item"><a href="product.php" class="nav-link">Tabel Product</a></li>
-						<li class="nav-item"><a href="user.php" class="nav-link">Tabel User</a></li>
+						<li class="nav-item"><a href="user.php" class="nav-link fw-bold">Tabel User</a></li>
 					</ul>
 				</div>
 				<div class="p-3 ">
@@ -59,22 +59,37 @@ $i = 1;
 			</div>
 			<div class="col-md-10">
 				<div class="p-4">
-					<h1 class="display-6">Tabel Pesanan</h1>
+					<h1 class="display-6">Tabel User</h1>
+					<a href="tambah_data.php?kategori=user" class="btn btn-primary px-3 mt-3">Tambah Data +</a>
 					<table class="my-3 table table-striped table-bordered">
 						<thead>
 							<tr>
 								<th scope="col">#</th>
-								<th scope="col">Nama Product</th>
-								<th scope="col">Jumlah</th>
-								<th scope="col">Ukuran</th>
-								<th scope="col">Total Harga</th>
-								<th scope="col">User ID</th>
-								<th scope="col">Status</th>
-								<th scope="col">Bukti</th>
+								<th scope="col">Nama</th>
+								<th scope="col">Email</th>
+								<th scope="col">Password</th>
+								<th scope="col">No Handphone</th>
+								<th scope="col">Alamat</th>
+								<th scope="col">Level</th>
 								<th scope="col">Action</th>
 							</tr>
 						</thead>
 						<tbody>
+							<?php while ($data = mysqli_fetch_assoc($select)) {?>
+								<tr>
+									<th scope="row"><?=$i++?></th>
+									<td><?=$data['nama']?></td>
+									<td><?=$data['email']?></td>
+									<td><?=$data['password']?></td>
+									<td><?=$data['no_hp']?></td>
+									<td><?=$data['alamat']?></td>
+									<td><?=$data['level']?></td>
+									<td>
+										<a class="btn btn-success" href="update_data.php?kategori=user&id=<?=$data['id']?>">Edit</a>
+										<a href="../controller/admin_config.php?delete=user&id=<?=$data['id']?>" class="btn btn-danger">Delete</a>
+									</td>
+								</tr>
+							<?php } ?>
 						</tbody>
 					</table>
 				</div>
