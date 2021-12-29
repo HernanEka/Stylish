@@ -59,7 +59,7 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a href="#" class="nav-link"><i class="fa fa-shopping-bag icon-nav"></i></a>
+							<a href="cart.php" class="nav-link"><i class="fa fa-shopping-bag icon-nav"></i></a>
 						</li>
 						<?php }else{ ?>
 						<li class="nav-item">

@@ -19,6 +19,8 @@ if (isset($_POST['user'])) {
 	
 	editproduct($_POST);
 
+} elseif (isset($_POST['pesanan'])) {
+	ubahstatus($_POST);
 }
 
 ?>
@@ -169,9 +171,39 @@ if (isset($_POST['user'])) {
 							<hr>
 							<button type="submit" class="btn btn-primary" name="product">Update Data</button>
 						</form>
-					<?php } ?>
+						<?php }elseif ($kategori == 'pesanan') {
+
+							$id = $_GET['id'];
+
+							$sql = "SELECT * FROM pesanan WHERE id = '$id'";
+							$select = mysqli_query($koneksi,$sql);
+
+							$data = mysqli_fetch_assoc($select);
+
+							?>
+							<h1 class="display-6">Update Status Pesanan</h1>
+							<form action="" method="POST" enctype="multipart/form-data" class="col-md-5">
+								<div class="my-3">
+									<label for="status" class="form-label">Kategori Product</label>
+									<select name="status" id="status" class="form-select">
+										<option value="" selected disabled hidden>Pilih Kategori</option>
+										<option value="1" <?php if ($data['status'] == "1"): ?>
+										selected
+										<?php endif ?>>Belum Dibayar</option>
+										<option value="2" <?php if ($data['status'] == "2"): ?>
+										selected
+										<?php endif ?>>Dalam Proses</option>
+										<option value="3" <?php if ($data['status'] == "3"): ?>
+										selected
+										<?php endif ?>>Terkirim</option>
+									</select>
+								</div>
+								<hr>
+								<button type="submit" class="btn btn-primary" name="pesanan">Update Data</button>
+							</form>
+						<?php } ?>
+					</div>
 				</div>
 			</div>
-		</div>
-	</body>
-	</html>
+		</body>
+		</html>

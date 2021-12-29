@@ -2,7 +2,7 @@
 
 include '../controller/admin_config.php';
 
-$sql = "SELECT * FROM product";
+$sql = "SELECT * FROM pesanan";
 $select = mysqli_query($koneksi,$sql);
 
 $i = 1;
@@ -75,6 +75,31 @@ $i = 1;
 							</tr>
 						</thead>
 						<tbody>
+							<?php while ($data = mysqli_fetch_assoc($select)) {
+
+								$product_id = $data['product_id'];
+
+								$sql2 = "SELECT * FROM product WHERE id = '$product_id'";
+								$select2 = mysqli_query($koneksi,$sql2);
+
+								$product = mysqli_fetch_assoc($select2);
+
+								?>
+								<tr>
+									<th scope="row"><?=$i++?></th>
+									<td><?=$product['nama']?></td>
+									<td><?=$data['jumlah']?></td>
+									<td><?=$data['ukuran']?></td>
+									<td><?=$data['total']?></td>
+									<td><?=$data['user_id']?></td>
+									<td><?=$data['status']?></td>
+									<td><?=$data['bukti']?></td>
+									<td>
+										<a class="btn btn-success" href="update_data.php?kategori=pesanan&id=<?=$data['id']?>">Edit</a>
+										<a href="../controller/admin_config.php?delete=pesanan&id=<?=$data['id']?>" class="btn btn-danger">Delete</a>
+									</td>
+								</tr>
+							<?php } ?>
 						</tbody>
 					</table>
 				</div>

@@ -126,6 +126,21 @@ function editproduct($request)
 	}
 }
 
+function ubahstatus($request)
+{
+	global $koneksi;
+
+	$id = $_GET['id'];
+
+	$status = $_POST['status'];
+
+	$sql = "UPDATE pesanan SET status = '$status' WHERE id = '$id'";
+	mysqli_query($koneksi,$sql);
+
+	header('Location:home.php');
+}
+
+
 if (isset($_GET['delete'])) {
 	
 	$kategori = $_GET['delete'];
@@ -145,6 +160,14 @@ if (isset($_GET['delete'])) {
 		mysqli_query($koneksi,$sql);
 
 		header('Location:../admin/product.php');
+
+	}elseif ($kategori == 'pesanan') {
+		
+		$sql = "DELETE FROM pesanan WHERE id = '$id' ";
+		mysqli_query($koneksi,$sql);
+
+		header('Location:../admin/home.php');
+
 
 	}
 }

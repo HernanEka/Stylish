@@ -105,12 +105,32 @@ function beli($request)
 
 	$total = $jumlah * $harga;
 
-	$sql = "INSERT INTO pesanan VALUES ('','$product_id','$jumlah','$total','$ukuran','$user_id','2','')";
+	$sql = "INSERT INTO pesanan VALUES ('','$product_id','$jumlah','$total','$ukuran','$user_id','1','')";
 	mysqli_query($koneksi,$sql);
 
 	header('Location:cart.php');
 }
 
 
+function bayar($request)
+{
+	global $koneksi;
+
+	$id = $_GET['id'];
+
+	$rand = rand();
+	$ekstensi =  array('png','jpg','jpeg','gif');
+	$filename = $_FILES['bukti']['name'];
+	$ukuran = $_FILES['bukti']['size'];
+	$ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+	$bukti = $rand."_".$filename;
+	move_uploaded_file($_FILES['bukti']['tmp_name'], 'src/img/foto-bukti/'.$bukti);
+
+	$sql = "UPDATE pesanan SET bukti =  '$bukti', status = '2' WHERE id = '$id'";
+	mysqli_query($koneksi,$sql);
+
+	header('Location:cart.php');
+}
 
 ?>
